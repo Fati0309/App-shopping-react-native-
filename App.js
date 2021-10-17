@@ -1,21 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from "react";
+import Home from "./screens/Home";
+import Test from "./screens/Test";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+//import {SplashScreen} from "react-native-splash-screen";
+import { createStackNavigator } from "@react-navigation/stack";
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
-export default function App() {
+function MyApp() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={({ route, navigation }) => ({
+        headerShown: false,
+      })}
+    >
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Test" component={Test} />
+    </Stack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  {
+    /*const splash={()=>{
+    useEffect(() => {
+      SplashScreen.hide(;)
+    }, [])
+  }}*/
+  }
+  return (
+    <NavigationContainer>
+      <MyApp />
+    </NavigationContainer>
+  );
+}
