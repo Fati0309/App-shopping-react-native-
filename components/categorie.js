@@ -11,15 +11,15 @@ export default function Categorie(props) {
 }
 const styles = StyleSheet.create({
   bgImage: {
-    flex: 1,
-    margin: 20,
-    padding: 80,
+    width: 200,
+    margin: 10,
     backgroundColor: "rgba(255,255,255,0)",
-    opacity: 0.7,
-    justifyContent: "flex-end",
+    opacity: 0.8,
+    justifyContent: "center",
   },
   txt: {
-    color: "black",
+    textAlign: "center",
+    color: "white",
     fontWeight: "bold",
     fontSize: 18,
   },

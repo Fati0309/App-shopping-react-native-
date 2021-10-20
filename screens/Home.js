@@ -4,9 +4,6 @@ import Ttitle from "../components/Ttitle";
 import Bbutton from "../components/Bbutton";
 import Pparagraphe from "../components/Pparagraphe";
 import { Card } from "react-native-paper";
-//import { createStackNavigator } from "@react-navigation/stack";
-
-//const Stack = createStackNavigator();
 
 export default function Home({ navigation }) {
   return (
@@ -16,7 +13,7 @@ export default function Home({ navigation }) {
     >
       <View style={styles.container}>
         <Card style={styles.card}>
-          <Ttitle value={"Shopping"} />
+          <Ttitle col={"white"} value={"Shopping"} />
           <Pparagraphe value={"Let's start with our collection."} />
           <Bbutton
             value={"Get started"}
