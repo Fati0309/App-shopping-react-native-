@@ -2,10 +2,16 @@ import * as React from "react";
 import { useState } from "react";
 import { Image, Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function Produit(props) {
   const [fav, usefav] = useState(false);
   const [plus, useplus] = useState(false);
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(Produit);
+      await AsyncStorage.setItem("@key_product", jsonValue);
+    } catch (e) {}
+  };
   return (
     <View style={styles.container}>
       <Image
@@ -20,7 +26,10 @@ export default function Produit(props) {
       <Text style={styles.txt}>{props.titre}</Text>
       <Text style={styles.txt}> {props.prix}</Text>
       <View style={styles.btn}>
-        <TouchableOpacity style={styles.icon} onPress={() => useplus(!plus)}>
+        <TouchableOpacity
+          style={styles.icon}
+          onPress={(() => useplus(!plus), storeData())}
+        >
           <AntDesign name="plus" size={30} color={plus ? "red" : "black"} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.icon} onPress={() => usefav(!fav)}>

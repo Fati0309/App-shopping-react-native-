@@ -4,27 +4,54 @@ import Carte from "./screens/Carte";
 import Test from "./screens/Test";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AntDesign from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
+import Profil from "./screens/Profil";
+import SingUp from "./screens/SingUp";
 const Stack = createStackNavigator();
 const tab = createBottomTabNavigator();
-{
-  /*const tabs = () => {
-  <tab.Navigator>
-    <tab.Screen
-      name="Test"
-      component={Test}
-      options={{
-        title: "Home",
-        tabBarIcon: ({ size, color }) => (
-          <AntDesign size={30} color="color" name="ios-home" />
-        ),
+const tabs = () => {
+  return (
+    <tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        tabBarActiveTintColor: "#e91e63",
       }}
-    />
-    <tab.Screen name="Cart" component={Carte} />
-  </tab.Navigator>;
-};*/
-}
+    >
+      <tab.Screen
+        name="Home"
+        component={Test}
+        options={{
+          tabBarLabel: "Home",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <tab.Screen
+        name="Cart"
+        component={Carte}
+        options={{
+          tabBarLabel: "cart",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="cart" color={color} size={size} />
+          ),
+        }}
+      />
+      <tab.Screen
+        name="Profil"
+        component={Profil}
+        options={{
+          tabBarLabel: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+    </tab.Navigator>
+  );
+};
+
 function MyApp() {
   return (
     <Stack.Navigator
@@ -34,7 +61,8 @@ function MyApp() {
       })}
     >
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Test" component={Test} />
+      <Stack.Screen name="tabs" component={tabs} />
+      <Stack.Screen name="SingUp" component={SingUp} />
     </Stack.Navigator>
   );
 }

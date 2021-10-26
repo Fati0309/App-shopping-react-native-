@@ -1,30 +1,43 @@
 import * as React from "react";
-import { Text, View, StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet, ImageBackground } from "react-native";
 import Ttitle from "../components/Ttitle";
 import Bbutton from "../components/Bbutton";
 import Pparagraphe from "../components/Pparagraphe";
 import { Card } from "react-native-paper";
-
-export default function Home({ navigation }) {
+import { useNavigation } from "@react-navigation/native";
+import * as Animatable from "react-native-animatable";
+export default function Home({}) {
+  const navigation = useNavigation();
   return (
     <ImageBackground
       style={{ flex: 1 }}
       source={require("../assets/Background.jpg")}
     >
-      <View style={styles.container}>
+      <Animatable.View
+        animation="FadeInLeft"
+        duration="2000"
+        style={styles.container}
+      >
         <Card style={styles.card}>
           <Ttitle col={"white"} value={"Shopping"} />
           <Pparagraphe value={"Let's start with our collection."} />
           <Bbutton
             value={"Get started"}
             onpress={() => {
-              navigation.push("Test");
+              //navigation.goBack();
+              navigation.navigate("tabs");
             }}
             bg={1}
           />
-          <Bbutton value={"Creat Account"} bg={0.6} />
+          <Bbutton
+            value={"Creat Account"}
+            bg={0.6}
+            onpress={() => {
+              navigation.navigate("SingUp");
+            }}
+          />
         </Card>
-      </View>
+      </Animatable.View>
     </ImageBackground>
   );
 }
