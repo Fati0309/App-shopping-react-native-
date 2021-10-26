@@ -1,11 +1,11 @@
 import * as React from "react";
-import { StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 import Ttitle from "../components/Ttitle";
 import Bbutton from "../components/Bbutton";
 import Pparagraphe from "../components/Pparagraphe";
 import { Card } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import * as Animatable from "react-native-animatable";
+//import * as Animatable from "react-native-animatable";
 export default function Home({}) {
   const navigation = useNavigation();
   return (
@@ -13,11 +13,7 @@ export default function Home({}) {
       style={{ flex: 1 }}
       source={require("../assets/Background.jpg")}
     >
-      <Animatable.View
-        animation="FadeInLeft"
-        duration="2000"
-        style={styles.container}
-      >
+      <View style={styles.container}>
         <Card style={styles.card}>
           <Ttitle col={"white"} value={"Shopping"} />
           <Pparagraphe value={"Let's start with our collection."} />
@@ -37,7 +33,7 @@ export default function Home({}) {
             }}
           />
         </Card>
-      </Animatable.View>
+      </View>
     </ImageBackground>
   );
 }

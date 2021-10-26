@@ -6,11 +6,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function Produit(props) {
   const [fav, usefav] = useState(false);
   const [plus, useplus] = useState(false);
-  const storeData = async (value) => {
+  const storeData = async (Produit) => {
     try {
       const jsonValue = JSON.stringify(Produit);
       await AsyncStorage.setItem("@key_product", jsonValue);
-    } catch (e) {}
+    } catch (e) {
+      alert(e);
+    }
   };
   return (
     <View style={styles.container}>
@@ -28,7 +30,13 @@ export default function Produit(props) {
       <View style={styles.btn}>
         <TouchableOpacity
           style={styles.icon}
-          onPress={(() => useplus(!plus), storeData())}
+          onPress={() => {
+            const list_produit = [props.titre, props.prix, props.src];
+            useplus(!plus);
+            storeData(list_produit);
+            if (plus == true) alert(plus + "votre produit est dans le panier");
+            else alert("rien");
+          }}
         >
           <AntDesign name="plus" size={30} color={plus ? "red" : "black"} />
         </TouchableOpacity>

@@ -7,7 +7,9 @@ export default function Carte({ navigation }) {
     try {
       const jsonValue = await AsyncStorage.getItem("@key_product");
       return jsonValue != null ? JSON.parse(jsonValue) : null;
-    } catch (e) {}
+    } catch (e) {
+      alert(e);
+    }
   };
   return (
     <ScrollView>

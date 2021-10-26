@@ -32,7 +32,7 @@ const tabs = () => {
         name="Cart"
         component={Carte}
         options={{
-          tabBarLabel: "cart",
+          tabBarLabel: "Panier",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="cart" color={color} size={size} />
           ),
@@ -62,7 +62,7 @@ function MyApp() {
     >
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="tabs" component={tabs} />
-      <Stack.Screen name="SingUp" component={SingUp} />
+      {/*<Stack.Screen name="SingUp" component={SingUp} />*/}
     </Stack.Navigator>
   );
 }
