@@ -1,5 +1,4 @@
-{
-  /*import React from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -77,7 +76,7 @@ const SignInScreen = ({ navigation }) => {
       <View style={styles.header}>
         <Text style={styles.text_header}>Register Now!</Text>
       </View>
-      <Animatable.View animation="fadeInBig" style={styles.footer}>
+      <View style={styles.footer}>
         <ScrollView>
           <Text style={styles.text_footer}>Username</Text>
           <View style={styles.action}>
@@ -207,7 +206,7 @@ const SignInScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </ScrollView>
-      </Animatable.View>
+      </View>
     </View>
   );
 };
@@ -279,5 +278,3 @@ const styles = StyleSheet.create({
     color: "grey",
   },
 });
-*/
-}

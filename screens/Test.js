@@ -48,7 +48,7 @@ export default function Test() {
           <Produit
             titre="T-Shirt"
             prix="10$"
-            src={require("../assets/produit_tshirt.jpg")}
+            src={require("../assets/produit_bague.jpg")}
           />
           <Produit
             titre="T-Shirt"

@@ -9,7 +9,7 @@ export default function Produit(props) {
   const storeData = async (Produit) => {
     try {
       const jsonValue = JSON.stringify(Produit);
-      await AsyncStorage.setItem("@key_product", jsonValue);
+      await AsyncStorage.setItem("PRD+", jsonValue);
     } catch (e) {
       alert(e);
     }
@@ -33,9 +33,11 @@ export default function Produit(props) {
           onPress={() => {
             const list_produit = [props.titre, props.prix, props.src];
             useplus(!plus);
+
+            {
+              plus ? {} : alert("votre produit est dans le panier");
+            }
             storeData(list_produit);
-            if (plus == true) alert(plus + "votre produit est dans le panier");
-            else alert("rien");
           }}
         >
           <AntDesign name="plus" size={30} color={plus ? "red" : "black"} />
