@@ -11,12 +11,11 @@ import {
   ScrollView,
   StatusBar,
 } from "react-native";
-import * as Animatable from "react-native-animatable";
-import LinearGradient from "react-native-linear-gradient";
+//import LinearGradient from "react-native-linear-gradient";
 import FontAwesome from "react-native-vector-icons";
 import Feather from "react-native-vector-icons";
 
-const SignInScreen = ({ navigation }) => {
+export default function SignUp({ navigation }) {
   const [data, setData] = React.useState({
     username: "",
     password: "",
@@ -88,9 +87,9 @@ const SignInScreen = ({ navigation }) => {
               onChangeText={(val) => textInputChange(val)}
             />
             {data.check_textInputChange ? (
-              <Animatable.View animation="FadeInLeft">
+              <View>
                 <Feather name="check-circle" color="green" size={20} />
-              </Animatable.View>
+              </View>
             ) : null}
           </View>
 
@@ -209,9 +208,7 @@ const SignInScreen = ({ navigation }) => {
       </View>
     </View>
   );
-};
-
-export default SignInScreen;
+}
 
 const styles = StyleSheet.create({
   container: {

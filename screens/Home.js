@@ -20,7 +20,6 @@ export default function Home({}) {
           <Bbutton
             value={"Get started"}
             onpress={() => {
-              //navigation.goBack();
               navigation.navigate("tabs");
             }}
             bg={1}
@@ -29,7 +28,7 @@ export default function Home({}) {
             value={"Creat Account"}
             bg={0.6}
             onpress={() => {
-              navigation.navigate("SingUp");
+              navigation.navigate("SignUp");
             }}
           />
         </Card>

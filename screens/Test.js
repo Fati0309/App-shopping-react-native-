@@ -46,24 +46,24 @@ export default function Test() {
             src={require("../assets/produit_tshirt.jpg")}
           />
           <Produit
-            titre="T-Shirt"
+            titre="Bague"
             prix="10$"
             src={require("../assets/produit_bague.jpg")}
           />
           <Produit
             titre="T-Shirt"
-            prix="10$"
+            prix="20$"
             src={require("../assets/produit_tshirt.jpg")}
           />
           <Produit
             titre="T-Shirt"
-            prix="10$"
+            prix="30$"
             src={require("../assets/produit_tshirt.jpg")}
           />
 
           <Produit
             titre="T-Shirt"
-            prix="10$"
+            prix="40$"
             src={require("../assets/produit_tshirt.jpg")}
           />
         </ScrollView>
@@ -85,11 +85,10 @@ const styles = StyleSheet.create({
   },
   txt2: {
     margin: 8,
-    color: "black",
     fontWeight: "bold",
     fontSize: 18,
   },
   scrlH: {
-    height: 300,
+    height: 250,
   },
 });

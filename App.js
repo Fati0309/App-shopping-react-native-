@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import Profil from "./screens/Profil";
-import SingUp from "./screens/SingUp";
+import SignUp from "./screens/SignUp";
 const Stack = createStackNavigator();
 const tab = createBottomTabNavigator();
 const tabs = () => {
@@ -15,7 +15,8 @@ const tabs = () => {
     <tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        tabBarActiveTintColor: "#e91e63",
+        tabBarActiveTintColor: "black",
+        headerShown: false,
       }}
     >
       <tab.Screen
@@ -62,7 +63,7 @@ function MyApp() {
     >
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="tabs" component={tabs} />
-      <Stack.Screen name="SingUp" component={SingUp} />
+      <Stack.Screen name="SignUp" component={SignUp} />
     </Stack.Navigator>
   );
 }

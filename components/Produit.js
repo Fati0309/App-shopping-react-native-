@@ -6,14 +6,35 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function Produit(props) {
   const [fav, usefav] = useState(false);
   const [plus, useplus] = useState(false);
+  const [List, setList] = useState([]);
   const storeData = async (Produit) => {
     try {
-      const jsonValue = JSON.stringify(Produit);
+      try {
+        getData();
+      } catch (e) {
+        alert("no value");
+      }
+      List.push(Produit);
+      setList([...List]);
+      const jsonValue = JSON.stringify(List);
+      alert(jsonValue);
       await AsyncStorage.setItem("PRD+", jsonValue);
     } catch (e) {
       alert(e);
     }
   };
+
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("PRD+");
+      if (jsonValue != null) {
+        setList(JSON.parse(jsonValue));
+      }
+    } catch (e) {
+      alert(e);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -25,27 +46,25 @@ export default function Produit(props) {
           margin: 10,
         }}
       />
-      <Text style={styles.txt}>{props.titre}</Text>
-      <Text style={styles.txt}> {props.prix}</Text>
-      <View style={styles.btn}>
-        <TouchableOpacity
-          style={styles.icon}
-          onPress={() => {
-            const list_produit = [props.titre, props.prix, props.src];
-            useplus(!plus);
-
-            {
-              plus ? {} : alert("votre produit est dans le panier");
-            }
-            storeData(list_produit);
-          }}
-        >
-          <AntDesign name="plus" size={30} color={plus ? "red" : "black"} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.icon} onPress={() => usefav(!fav)}>
-          <AntDesign name="hearto" size={30} color={fav ? "red" : "black"} />
-        </TouchableOpacity>
+      <View style={styles.bttn}>
+        <Text style={styles.txt}>{props.titre}</Text>
+        <View style={styles.btn}>
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => {
+              const list_produit = [props.titre, props.prix, props.src];
+              useplus(!plus);
+              storeData(list_produit);
+            }}
+          >
+            <AntDesign name="plus" size={30} color={plus ? "red" : "black"} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.icon} onPress={() => usefav(!fav)}>
+            <AntDesign name="hearto" size={30} color={fav ? "red" : "black"} />
+          </TouchableOpacity>
+        </View>
       </View>
+      <Text style={styles.txt}> {props.prix}</Text>
     </View>
   );
 }
@@ -57,6 +76,11 @@ const styles = StyleSheet.create({
   btn: {
     flexDirection: "row",
   },
+  bttn: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
   txt: {
     fontSize: 18,
     fontWeight: "bold",
