@@ -41,7 +41,7 @@ export default function Test() {
         <Text style={styles.txt2}> All Products </Text>
         <ScrollView>
           <Produit
-            titre="T-Shirt"
+            titre="T-1"
             prix="10$"
             src={require("../assets/produit_tshirt.jpg")}
           />
@@ -51,18 +51,18 @@ export default function Test() {
             src={require("../assets/produit_bague.jpg")}
           />
           <Produit
-            titre="T-Shirt"
+            titre="T-2"
             prix="20$"
             src={require("../assets/produit_tshirt.jpg")}
           />
           <Produit
-            titre="T-Shirt"
+            titre="T-3"
             prix="30$"
             src={require("../assets/produit_tshirt.jpg")}
           />
 
           <Produit
-            titre="T-Shirt"
+            titre="T-4"
             prix="40$"
             src={require("../assets/produit_tshirt.jpg")}
           />

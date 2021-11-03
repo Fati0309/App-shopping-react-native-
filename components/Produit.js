@@ -9,15 +9,17 @@ export default function Produit(props) {
   const [List, setList] = useState([]);
   const storeData = async (Produit) => {
     try {
-      try {
-        getData();
-      } catch (e) {
-        alert("no value");
-      }
-      List.push(Produit);
-      setList([...List]);
-      const jsonValue = JSON.stringify(List);
-      alert(jsonValue);
+      let oldData = [];
+
+      //get the data from stock
+      oldData = await getData();
+
+      //add item in data (= list = panier)
+      setList([...oldData, Produit]);
+      //change to json format
+      const jsonValue = JSON.stringify([...oldData, Produit]);
+
+      //update the stock (data = data + item)
       await AsyncStorage.setItem("PRD+", jsonValue);
     } catch (e) {
       alert(e);
@@ -28,7 +30,7 @@ export default function Produit(props) {
     try {
       const jsonValue = await AsyncStorage.getItem("PRD+");
       if (jsonValue != null) {
-        setList(JSON.parse(jsonValue));
+        return JSON.parse(jsonValue);
       }
     } catch (e) {
       alert(e);

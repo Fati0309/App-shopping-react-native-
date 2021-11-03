@@ -1,7 +1,16 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Text, StyleSheet, ScrollView, View, Image } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  ScrollView,
+  View,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AntDesign } from "@expo/vector-icons";
 export default function Carte({ navigation }) {
   const [List, setList] = useState(null);
   const getData = async () => {
@@ -15,31 +24,67 @@ export default function Carte({ navigation }) {
       alert(e);
     }
   };
+  const videData = async () => {
+    try {
+      const jsonValue = JSON.stringify([]);
+      await AsyncStorage.setItem("PRD+", jsonValue);
+    } catch (e) {
+      alert(e);
+    }
+  };
+
   useEffect(() => {
     getData();
     return;
-  }, []);
+  }, [List, setList]);
 
   return (
-    <ScrollView style={styles.container}>
-      {List !== null ? (
-        List.map((value) => {
-          return (
-            <View>
-              <Text>{value[0]}</Text>
-              <Text>{value[1]}</Text>
-            </View>
-          );
-        })
-      ) : (
-        <View></View>
-      )}
-    </ScrollView>
+    <SafeAreaView style={{ flex: 1, paddingTop: 20 }}>
+      <ScrollView style={styles.container}>
+        <View>
+          <TouchableOpacity
+            style={{ backgroundColor: "red" }}
+            onPress={() => videData()}
+          >
+            <Text> clear All</Text>
+          </TouchableOpacity>
+        </View>
+        {List !== null ? (
+          List.map((value) => {
+            return (
+              <View style={styles.con}>
+                <View style={styles.produit}>
+                  <Text>{value[0]}</Text>
+                  <Text>{value[1]}</Text>
+                </View>
+              </View>
+            );
+          })
+        ) : (
+          <View>
+            <Text style={{ fontWeight: "bold" }}>Votra panier est vide </Text>
+          </View>
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
     flex: 1,
+    marginTop: 20,
+  },
+  con: {
+    flex: 1,
+    flexDirection: "row",
+    height: 100,
+  },
+  produit: {
+    margin: 5,
+  },
+  vide: {
+    flex: 1,
+    justifyContent: "center",
+    alignContent: "center",
   },
 });
