@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 import {
   View,
   Text,
@@ -10,7 +12,9 @@ import {
   ScrollView,
   StatusBar,
 } from "react-native";
+import { login } from "../features/user/userSlice";
 export default function SignUp() {
+  const navigation = useNavigation();
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -42,6 +46,7 @@ export default function SignUp() {
       confirm_password: val,
     });
   };
+  const dispatch = useDispatch();
 
   return (
     <View style={styles.container}>
@@ -102,7 +107,18 @@ export default function SignUp() {
             />
           </View>
           <View style={styles.button}>
-            <TouchableOpacity style={styles.signIn} onPress={() => {}}>
+            <TouchableOpacity
+              style={styles.signIn}
+              onPress={() => {
+                alert(data.password);
+                navigation.navigate("Profil");
+                dispatch(
+                  login({
+                    name: data.username,
+                  })
+                );
+              }}
+            >
               <View style>
                 <View style={styles.signIn}>
                   <Text

@@ -8,6 +8,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import Profil from "./screens/Profil";
 import SignUp from "./screens/SignUp";
+import store from "./app/store";
+import { Provider } from "react-redux";
 const Stack = createStackNavigator();
 const tab = createBottomTabNavigator();
 const tabs = () => {
@@ -64,14 +66,17 @@ function MyApp() {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="tabs" component={tabs} />
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="Profil" component={Profil} />
     </Stack.Navigator>
   );
 }
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <MyApp />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <MyApp />
+      </NavigationContainer>
+    </Provider>
   );
 }
