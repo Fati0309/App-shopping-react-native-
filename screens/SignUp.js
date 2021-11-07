@@ -110,7 +110,6 @@ export default function SignUp() {
             <TouchableOpacity
               style={styles.signIn}
               onPress={() => {
-                alert(data.password);
                 navigation.navigate("Profil");
                 dispatch(
                   login({

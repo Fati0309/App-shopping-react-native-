@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Image, Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import ImageViewer from "react-native-image-zoom-viewer";
 export default function Produit(props) {
   const [fav, usefav] = useState(false);
   const [plus, useplus] = useState(false);
@@ -39,8 +40,10 @@ export default function Produit(props) {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={props.src}
+      <ImageViewer
+        image={props.src}
+        imageIndex={0}
+        isVisible={this.state.isImageViewVisible}
         style={{
           height: 300,
           width: 300,
