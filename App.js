@@ -10,6 +10,7 @@ import Profil from "./screens/Profil";
 import SignUp from "./screens/SignUp";
 import store from "./app/store";
 import { Provider } from "react-redux";
+import DetailProduits from "./screens/DetailProduits";
 const Stack = createStackNavigator();
 const tab = createBottomTabNavigator();
 const tabs = () => {
@@ -67,6 +68,7 @@ function MyApp() {
       <Stack.Screen name="tabs" component={tabs} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Profil" component={Profil} />
+      <Stack.Screen name="DetailProduits" component={DetailProduits} />
     </Stack.Navigator>
   );
 }

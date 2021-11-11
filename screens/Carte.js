@@ -41,14 +41,7 @@ export default function Carte({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, paddingTop: 20 }}>
       <ScrollView style={styles.container}>
-        <View>
-          <TouchableOpacity
-            style={{ backgroundColor: "red" }}
-            onPress={() => videData()}
-          >
-            <Text> clear All</Text>
-          </TouchableOpacity>
-        </View>
+        
         {List !== null ? (
           List.map((value) => {
             return (
@@ -60,9 +53,17 @@ export default function Carte({ navigation }) {
               </View>
             );
           })
-        ) : (
           <View>
-            <Text style={{ fontWeight: "bold" }}>Votra panier est vide </Text>
+          <TouchableOpacity
+            style={{ backgroundColor: "red" }}
+            onPress={() => videData()}
+          >
+            <Text> clear All</Text>
+          </TouchableOpacity>
+
+        ) : (
+          <View style={styles.vide} >
+            <Text >Votra panier est vide </Text>
           </View>
         )}
       </ScrollView>
@@ -83,8 +84,11 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   vide: {
-    flex: 1,
-    justifyContent: "center",
-    alignContent: "center",
+ 
+    opacity:0.5,   flex: 1, 
+    alignItems: 'center',
+    textAlign:"center",
+    margin:20,
+    justifyContent: 'center',
   },
 });

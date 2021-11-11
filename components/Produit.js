@@ -4,7 +4,12 @@ import { Image, Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ImageViewer from "react-native-image-zoom-viewer";
+import { useNavigation } from "@react-navigation/native";
+import BottomSheet from "react-native-gesture-bottom-sheet";
+
+
 export default function Produit(props) {
+const navigation = useNavigation();
   const [fav, usefav] = useState(false);
   const [plus, useplus] = useState(false);
   const [List, setList] = useState([]);
@@ -37,20 +42,36 @@ export default function Produit(props) {
       alert(e);
     }
   };
+  const sheetRef = React.useRef(null);
 
   return (
     <View style={styles.container}>
-      <ImageViewer
-        image={props.src}
-        imageIndex={0}
-        isVisible={this.state.isImageViewVisible}
+      {/* <BottomSheet
+        ref={sheetRef}
+        snapPoints={[450, 300, 0]}
+        borderRadius={10}
+        renderContent={renderContent}
+      /> */}
+     <TouchableOpacity 
+      delayLongPress={30}
+      activeOpacity={0.6}
+      onLongPress={()=>{ 
+       alert("vous allez voir les détails de ce produit")
+      //  sheetRef.current.show()
+         navigation.navigate("DetailProduits")
+        }
+        }
+    >
+        <Image
+        source={props.src}
         style={{
           height: 300,
           width: 300,
           resizeMode: "stretch",
           margin: 10,
         }}
-      />
+      /> 
+      </TouchableOpacity>
       <View style={styles.bttn}>
         <Text style={styles.txt}>{props.titre}</Text>
         <View style={styles.btn}>
